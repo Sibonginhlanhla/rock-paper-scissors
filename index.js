@@ -12,16 +12,17 @@ function getHumanChoice(){
     return choice;
 }
 
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice == computerChoice)return 0;
+    else if (humanChoice == "rock" && computerChoice == "scissors")return 1;
+    else if (humanChoice == "paper" && computerChoice == "rock")return 1;
+    else if (humanChoice == "scissors" && computerChoice == "paper")return 1;
+    else return -1;
+}
+
 function playGame(){
     let humanScore = 0;
     let computerScore = 0;
-    function playRound(humanChoice, computerChoice) {
-        if (humanChoice == computerChoice)return 0;
-        else if (humanChoice == "rock" && computerChoice == "scissors")return 1;
-        else if (humanChoice == "paper" && computerChoice == "rock")return 1;
-        else if (humanChoice == "scissors" && computerChoice == "paper")return 1;
-        else return -1;
-    }
     let i = 0;
     while (i < 5){
         const humanSelection = getHumanChoice();
@@ -37,4 +38,37 @@ function playGame(){
     else console.log("tie");
 }
 
-playGame();
+const buttons = document.querySelectorAll("button");
+const hScore = document.querySelector("#my-score");
+const cScore = document.querySelector("#computer-score");
+let lastOne = document.querySelector("#last-one");
+let lastTwo = document.querySelector("#last-two");
+let humanScore = 0;
+let computerScore = 0;
+
+function updateScore(humanScore, computerScore) {
+    if (computerScore == 6 || humanScore == 6){
+        const winner = document.querySelector("#winner");
+        if (computerScore == 6)winner.textContent = "computer";
+        else winner.textContent = "human";
+        cScore.textContent = "";
+        hScore.textContent = "";
+        humanScore = 0;
+        computerScore = 0;
+    }
+    hScore.textContent = `${humanScore}`;
+    cScore.textContent = `${computerScore}`;
+}
+
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        let myChoice = button.textContent;
+        let comChoice = getComputerChoice();
+        lastOne.textContent = myChoice;
+        lastTwo.textContent = comChoice;
+        let score = playRound(myChoice, comChoice);
+        if (score == 1)humanScore += 1;
+        else if (score == -1)computerScore += 1;
+        updateScore(humanScore, computerScore);
+    });
+});
