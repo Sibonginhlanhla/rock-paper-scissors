@@ -47,7 +47,7 @@ let humanScore = 0;
 let computerScore = 0;
 
 function updateScore(humanScore, computerScore) {
-    if (computerScore == 6 || humanScore == 6){
+    if (computerScore === 6 || humanScore === 6){
         const winner = document.querySelector("#winner");
         if (computerScore == 6)winner.textContent = "computer";
         else winner.textContent = "human";
