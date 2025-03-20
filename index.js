@@ -46,15 +46,15 @@ let lastTwo = document.querySelector("#last-two");
 let humanScore = 0;
 let computerScore = 0;
 
-function updateScore(humanScore, computerScore) {
+function updateScore() {
     if (computerScore === 6 || humanScore === 6){
+        humanScore = 0;
+        computerScore = 0;
         const winner = document.querySelector("#winner");
         if (computerScore == 6)winner.textContent = "computer";
         else winner.textContent = "human";
-        cScore.textContent = "";
-        hScore.textContent = "";
-        humanScore = 0;
-        computerScore = 0;
+        cScore.textContent = "0";
+        hScore.textContent = "0";
     }
     hScore.textContent = `${humanScore}`;
     cScore.textContent = `${computerScore}`;
@@ -69,6 +69,6 @@ buttons.forEach((button) => {
         let score = playRound(myChoice, comChoice);
         if (score == 1)humanScore += 1;
         else if (score == -1)computerScore += 1;
-        updateScore(humanScore, computerScore);
+        updateScore();
     });
 });
