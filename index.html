@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="index.js" defer></script>
+    <style>
+        #last-one, #rounds-two {
+            color: blue;
+        }
+        #rounds-one, #last-two {
+            color: green;
+        }
+        p {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <button>rock</button>
@@ -13,8 +24,10 @@
     <div>
         <h1>me: <span id="my-score"></span></h1>
         <h1>computer: <span id="computer-score"></span></h1>
-        <h2>last round: <i>me:</i><span id="last-one"></span> ----- <i>coms: </i><span id="last-two"></span></h2>
+        <h2>last round: <i>me: </i><span id="last-one"></span> ----- <i>coms: </i><span id="last-two"></span></h2>
+        <h2>rounds won: <i>me: </i><span id="rounds-one"></span> ----- <i>coms: </i><span id="rounds-two"></span></h2>
     </div>
     <h2>last winner: <span id="winner"></span></h2>
+    <p>reach 6 points first to win the round!</p>
 </body>
 </html>

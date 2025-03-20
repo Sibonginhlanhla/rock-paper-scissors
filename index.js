@@ -43,16 +43,28 @@ const hScore = document.querySelector("#my-score");
 const cScore = document.querySelector("#computer-score");
 let lastOne = document.querySelector("#last-one");
 let lastTwo = document.querySelector("#last-two");
+let roundsOne = document.querySelector("#rounds-one");
+let roundsTwo = document.querySelector("#rounds-two");
 let humanScore = 0;
 let computerScore = 0;
+let roundsWon = 0;
+let roundsLost = 0;
 
 function updateScore() {
     if (computerScore === 6 || humanScore === 6){
+        const winner = document.querySelector("#winner");
+        if (computerScore == 6){
+            winner.textContent = "computer";
+            roundsLost += 1;
+            roundsTwo.textContent = roundsLost;
+        }
+        else {
+            winner.textContent = "me";
+            roundsWon += 1;
+            roundsOne.textContent = roundsWon;
+        }
         humanScore = 0;
         computerScore = 0;
-        const winner = document.querySelector("#winner");
-        if (computerScore == 6)winner.textContent = "computer";
-        else winner.textContent = "human";
         cScore.textContent = "0";
         hScore.textContent = "0";
     }
