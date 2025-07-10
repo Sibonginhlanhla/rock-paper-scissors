@@ -1,3 +1,1 @@
-# rock paper scissors 
-
-👉 [Live on Vercel](https://sibonginhlanhla.github.io/rock-paper-scissors/) 
+# rock paper scissors Github Pages](https://sibonginhlanhla.github.io/rock-paper-scissors/) 
